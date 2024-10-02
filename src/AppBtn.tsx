@@ -11,7 +11,7 @@ import {
 } from '@xyflow/react';
  
 import '@xyflow/react/dist/style.css';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
  
 const initialNodes = [
   { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } , type: 'bidirectional'},
@@ -22,6 +22,7 @@ const initialEdges = [{ id: 'e1-2', source: '1', target: '2' ,markerEnd: { type:
 export default function App() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const [inputValue, setInputValue] = useState('');
  
   const onConnect = useCallback(
     (params: any) => setEdges((eds) => addEdge(params, eds)),
